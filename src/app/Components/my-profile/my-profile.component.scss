@@ -1,0 +1,19 @@
+.tabContainer {
+    align-items:center;
+    position:relative;
+    // margin-left: 40%;
+}
+
+.profcon{
+    width: 100%;
+    display:flex;
+    flex-direction:column;
+    font-size: large;
+}
+ul {
+    list-style-type: none;
+}
+li {
+    margin-left: 5%;
+    margin-top: 1%;
+}

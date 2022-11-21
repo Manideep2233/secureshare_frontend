@@ -1,0 +1,21 @@
+<div style="margin-left:40%;margin-top:20px">
+    <table>
+        <tr *ngFor="let item of notif_list;">
+            <td>
+                <b>{{item.groupName}}</b>
+            </td>&nbsp;&nbsp;&nbsp;
+            <td>
+                Requested By:{{item.username}}
+            </td>&nbsp;&nbsp;&nbsp;
+            <td>
+                <button mat-raised-button (click)="acceptreq(item.reqId)">Accept</button>
+            </td>&nbsp;&nbsp;&nbsp;
+            <td>
+                <button mat-raised-button (click)="rejectreq(item.reqId)">Reject</button>
+            </td>&nbsp;&nbsp;&nbsp;
+        </tr>
+        <tr *ngIf="notif_list.length==0">
+            <b>You have no notifications</b>
+        </tr>
+    </table>
+</div>

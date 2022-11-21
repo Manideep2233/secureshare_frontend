@@ -1,0 +1,25 @@
+<div class="container">
+    <div style="width:50%;">
+        <table>
+            <tr *ngFor="let user of Users">
+                UserName:<td>{{user.username}}</td>
+                FullName:<td>{{user.fullname}}</td>
+                Utilized:<td>{{user.utilized}}</td>
+                Total:<td>{{user.total}}</td>
+                <button mat-stroked-button (click)="editSize(user.id)">Edit Size</button>
+                <button mat-stroked-button (click)="deleteUser(user.id)">Delete</button>
+            </tr>
+        </table>
+    </div>
+    <div style="width:50%">
+        <table>
+            <tr *ngFor="let group of groups_list">
+                GroupName:<td>{{group.name}}</td>
+                Utilized:<td>{{group.utilized}}</td>
+                Total:<td>{{group.total}}</td>
+                <button mat-stroked-button (click)="editGroupSize(group.id)">Edit Size</button>
+                <button mat-stroked-button (click)="deleteGroup(group.id)">Delete</button>
+            </tr>
+        </table>
+    </div>
+</div>

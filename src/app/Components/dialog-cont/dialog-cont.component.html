@@ -1,0 +1,9 @@
+<mat-dialog-content>
+<form [formGroup]="updateForm">
+    <input matInput type="number" min="0" formControlName="newSize">
+</form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button mat-dialog-close (click)="update()">Update</button>
+    <button mat-button [mat-dialog-close]="true">Cancel</button>
+</mat-dialog-actions>

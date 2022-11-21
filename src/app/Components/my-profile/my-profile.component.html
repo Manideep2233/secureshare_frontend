@@ -1,0 +1,51 @@
+<div class="profcon">
+<div style="width: 100%;margin-left:10px;">
+<ul>
+    <li>
+        <td>UserName:&nbsp;&nbsp;&nbsp;{{username}}</td>
+    </li>
+    <li>
+        <td>FullName:&nbsp;&nbsp;&nbsp;{{Fullname}}</td>
+    </li>
+    <li>
+        <td>EmailId:&nbsp;&nbsp;&nbsp;{{email}}</td>
+    </li>
+    <li>
+        <button mat-stroked-button (click)="editProfile()">Edit Profile</button>
+    </li>
+</ul>
+</div>
+<hr style="width: 100%;">
+<div style="width:100%;margin-left: 1%;">
+        <legend>My Posts</legend>
+        <ul *ngFor="let post of allPosts_list;let i=index;">
+            <div style="background-color:aquamarine;"><br>
+            <li>
+                Message:{{post.message}}<br><br>Time:{{post.postedTime}}<br><br>Posted By:{{post.createdBy}}<br>
+            </li>
+            <li *ngIf="post.fileName!=''">
+                <button mat-raised-button (click)="getfile(post.postId)">{{post.fileName}} {{post.fileSize}}MB</button>
+            </li>
+            <li *ngIf="all_view[i]">
+                <button mat-raised-button (click)="viewComments(i)">View Comments</button>
+            </li>
+            <li *ngIf="!all_view[i]">
+                <button mat-raised-button (click)="HideComments(i)">Hide Comments</button>
+            </li>
+            <li *ngIf="all_enablecomment[i]==true">
+                    <button mat-raised-button (click)="addcomm1(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button><br><br>
+                    <form [formGroup]="addcomm2">
+                        <input type="text" formControlName="currcomment2">
+                    </form><br>
+                <span *ngFor="let item of post.comments">
+                    <div style="background-color:white">
+                    <p>{{item.commentedBy}}</p>
+                    <p>{{item.message}}</p>
+                    <p>{{item.commentedTime}}</p>
+                    </div>
+                </span>  
+            </li><br>
+            </div>
+        </ul>
+</div>
+</div>

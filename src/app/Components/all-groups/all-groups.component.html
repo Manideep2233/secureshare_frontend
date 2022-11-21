@@ -1,0 +1,18 @@
+<div style="margin-left:42%;margin-top:20px;">
+    <table>
+        <tr *ngFor="let group of groupsList">
+            <td>
+                {{group.name}} : {{group.description}}
+            </td>&nbsp;&nbsp;&nbsp;&nbsp;
+            <td *ngIf="!group.isRequested">
+                <button mat-raised-button (click)="requestGroup(group.id)">Request</button>
+            </td>
+            <td *ngIf="group.isRequested">
+                <button mat-raised-button disabled>Requested</button>
+            </td>
+        </tr>
+        <tr *ngIf="groupsList.length==0">
+            <b>No Groups to load</b>
+        </tr>
+    </table>
+</div>

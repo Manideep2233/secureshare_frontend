@@ -1,0 +1,117 @@
+<div class="container">
+    <div style="width:10%">
+        <table style="margin-left:10%">
+            <legend>Select the GroupName for Individual posts</legend>
+            <tr>
+                <td>
+                    <button (click)="getAllPosts()">All Posts</button>
+                </td>
+            </tr>
+            <tr *ngFor="let group of groupsList">
+                <td>
+                    <button (click)="groupSpecific(group)">{{group.name}}</button>
+                </td>
+            </tr>
+        </table>
+        <br><br><br><br>
+        <div style="margin-left:20px;">
+            <form [formGroup]="createGroup">
+                <input type="text" formControlName="groupName" placeholder="Enter Group Name">&nbsp;&nbsp;&nbsp;
+                <!-- <mat-error *ngIf="createGroup.get('groupName').errors?.required">
+                    Name is <strong>required</strong>
+                </mat-error> -->
+                <input type="text" formControlName="groupDescription" placeholder="Enter Group Description">
+                <!-- <mat-error *ngIf="createGroup.get('groupDescription').errors?.required">
+                    Description is <strong>required</strong>
+                </mat-error> -->
+            </form><br>
+            <button mat-raised-button (click)="create_Group()" [disabled]="createGroup.invalid">Create New Group</button>
+        </div>
+    </div>
+    <div style="width:90%">
+        <div *ngIf="default" style="margin-left: 10%;">
+            <legend>All Posts</legend>
+            <ul *ngFor="let post of allPosts_list;let i=index;">
+                <div style="background-color:aquamarine;">
+                <li styl><br>
+                    Message:{{post.message}}<br>Time:{{post.postedTime}}<br>Posted By:{{post.createdBy}}<br>
+                </li>
+                <li *ngIf="post.fileName!=''">
+                    <button mat-raised-button (click)="getfile(post.postId,post.fileName)">{{post.fileName}} {{post.fileSize}}MB</button>
+                </li>
+                <li *ngIf="all_view[i]">
+                    <button mat-raised-button (click)="viewComments_2(post.postId,i)">View Comments</button>
+                </li>
+                <li *ngIf="!all_view[i]">
+                    <button mat-raised-button (click)="HideComments_2(i)">Hide Comments</button>
+                </li>
+                <li *ngIf="all_enablecomment[i]==true">
+                    <button mat-raised-button (click)="add_comm2(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button><br><br>
+                    <form [formGroup]="addcomm2">
+                        <input type="text" formControlName="currcomment2">
+                    </form> <br><br>
+                    <span style="display: inline;" *ngFor="let item of post.comments">
+                        <div style="background-color:white">
+                        <p>{{item.commentedBy}}</p>
+                        <p>{{item.message}}</p>
+                        <p>{{item.commentedTime}}</p>
+                    </div>
+                    </span>  
+                </li><br>
+            </div>
+            </ul>
+        </div>
+        <table *ngIf="!default" style="margin-left: 10%;">
+            <legend>Posts for {{selectedGroup.name}}</legend>
+            <tr>
+                <td>
+                    <form [formGroup]="postForm" style="margin-left:2%">
+                        Add Post:
+                        <input type="file" class="file-input" formControlName="post" (change)="onFileSelected($event)" #fileUpload>
+                        <div class="file-upload">
+                            {{fileName || "No file uploaded yet."}}
+                            <button mat-raised-button color="primary" (click)="fileUpload.click()">Choose</button>
+                        </div>
+                        <mat-form-field>
+                            <mat-label>Description</mat-label>
+                            <input matInput formControlName="message" type="text">
+                          </mat-form-field>
+                        <button mat-raised-button (click)="useraddPost()" [disabled]="postForm.invalid">Post</button>
+                        </form>
+                </td>
+            </tr>
+        </table>
+            <ul style="margin-left:10%;" *ngFor="let post of specificPosts;let i=index;">
+                <div style="background-color:aquamarine;width: 100%;">
+                <li>
+                    Message:{{post.message}}<br>Time:{{post.postedTime}}<br>Posted By:{{post.createdBy}}<br>
+                </li>
+                <li *ngIf="post.fileName!=''">
+                    <button mat-raised-button (click)="getfile(post.postId,post.fileName)">{{post.fileName}} {{post.fileSize}}MB</button>
+                </li>
+                <li *ngIf="view[i]">
+                    <button mat-raised-button (click)="viewComments(post.postId,i)">View Comments</button>
+                </li>
+                <li *ngIf="!view[i]">
+                    <button mat-raised-button (click)="HideComments(i)">Hide Comments</button>
+                </li>
+                <li *ngIf="enablecomment[i]==true">
+                        <button mat-raised-button (click)="addcomm1(post.postId)" [disabled]="addcomm.invalid">Add Comment</button><br><br>
+                        <form [formGroup]="addcomm">
+                            <input type="text" formControlName="currcomment">
+                            <!-- <mat-error *ngIf="addcomm.get('currcomment').errors?.required">
+                                Comment is <strong>required</strong>
+                            </mat-error> -->
+                        </form><br><br>
+                    <span style="display: inline;" *ngFor="let item of post.comments">
+                        <div style="background-color:white">
+                            <p>{{item.commentedBy}}</p>
+                            <p>{{item.message}}</p>
+                            <p>{{item.commentedTime}}</p>
+                        </div>
+                        </span> 
+                </li><br>
+                </div>
+            </ul>
+    </div>
+</div>

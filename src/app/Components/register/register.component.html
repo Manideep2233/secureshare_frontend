@@ -1,0 +1,44 @@
+<div class="regdiv">
+    <h2>Register</h2>
+    <form name="regForm" [formGroup]="regForm">
+        <mat-form-field>
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullname" type="text">
+            <mat-error *ngIf="regForm.get('fullname').errors?.required">
+              Full Name is <strong>required</strong>
+          </mat-error>
+          </mat-form-field><br>
+        <mat-form-field>
+            <mat-label>UserName</mat-label>
+            <input matInput formControlName="UserName" type="text">
+            <mat-error *ngIf="regForm.get('UserName').errors?.required">
+              User Name is <strong>required</strong>
+          </mat-error>
+          </mat-form-field><br>
+          <mat-form-field>
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" type="email">
+            <mat-error *ngIf="regForm.get('email').errors?.required">
+              email is <strong>required</strong>
+          </mat-error>
+          <mat-error *ngIf="regForm.get('email').errors?.email">
+            Email format is <strong>Wrong</strong>
+        </mat-error>
+          </mat-form-field><br>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="password" type="password">
+            <mat-error *ngIf="regForm.get('password').errors?.required">
+              Password is <strong>required</strong>
+          </mat-error>
+          </mat-form-field><br>
+          <mat-form-field>
+            <mat-label>Password</mat-label>
+            <input matInput formControlName="repassword" type="password">
+            <mat-error *ngIf="regForm.get('repassword').errors?.required">
+              Password is <strong>required</strong>
+          </mat-error>
+          </mat-form-field><br>
+    </form><br>
+    <button mat-raised-button (click)="regUser()" [disabled]="regForm.invalid">Register</button>
+</div>
