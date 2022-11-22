@@ -19,7 +19,7 @@
 <div style="width:100%;margin-left: 1%;">
         <legend>My Posts</legend>
         <ul *ngFor="let post of allPosts_list;let i=index;">
-            <div style="background-color:aquamarine;"><br>
+            <div style="background-color:powderblue;width: 90%; border-radius: 25px;"><br>
             <li>
                 Message:{{post.message}}<br><br>Time:{{post.postedTime}}<br><br>Posted By:{{post.createdBy}}<br>
             </li>
@@ -33,15 +33,14 @@
                 <button mat-raised-button (click)="HideComments(i)">Hide Comments</button>
             </li>
             <li *ngIf="all_enablecomment[i]==true">
-                    <button mat-raised-button (click)="addcomm1(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button><br><br>
-                    <form [formGroup]="addcomm2">
-                        <input type="text" formControlName="currcomment2">
-                    </form><br>
+                <form [formGroup]="addcomm2">
+                    <textarea type="text" formControlName="currcomment2"></textarea>
+                </form><br>   
+                <button mat-raised-button (click)="addcomm1(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button><br><br>   
                 <span *ngFor="let item of post.comments">
-                    <div style="background-color:white">
-                    <p>{{item.commentedBy}}</p>
-                    <p>{{item.message}}</p>
-                    <p>{{item.commentedTime}}</p>
+                    <div style="background-color:#0594fa; width: 90%; border-radius: 25px;">
+                        <p style=" margin-left: 30px;">{{item.commentedBy}} &nbsp;&nbsp;{{item.commentedTime}}</p>
+                        <p style=" margin-left: 30px;">{{item.message}}</p>
                     </div>
                 </span>  
             </li><br>
