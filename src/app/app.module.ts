@@ -22,6 +22,7 @@ import { DisplayDialogComponent } from './Components/display-dialog/display-dial
 import { LogoutComponent } from './Components/logout/logout.component';
 import { NotificationsComponent } from './Components/notifications/notifications.component';
 import { MfaComponent } from './Components/mfa/mfa.component';
+import { Manage2Component } from './Components/manage2/manage2.component';
 
 
 @NgModule({
@@ -40,7 +41,8 @@ import { MfaComponent } from './Components/mfa/mfa.component';
     DisplayDialogComponent,
     LogoutComponent,
     NotificationsComponent,
-    MfaComponent
+    MfaComponent,
+    Manage2Component
   ],
   imports: [
     BrowserModule,

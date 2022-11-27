@@ -1495,4 +1495,211 @@ export class DefaultService {
         );
     }
 
+
+    /**
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+     public myGroups(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<ResponseObject>;
+     public myGroups(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpResponse<ResponseObject>>;
+     public myGroups(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpEvent<ResponseObject>>;
+     public myGroups(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*'}): Observable<any> {
+ 
+         let jwtToken=localStorage.getItem("token");
+         let headers=this.defaultHeaders;
+         if(jwtToken!=null) {
+         jwtToken=jwtToken.replace('"','');
+         jwtToken=jwtToken.replace('"','');
+         headers=headers.append('Authorization','Bearer '+jwtToken);
+         }
+ 
+         let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+         if (httpHeaderAcceptSelected === undefined) {
+             // to determine the Accept header
+             const httpHeaderAccepts: string[] = [
+                 '*/*'
+             ];
+             httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+         }
+         if (httpHeaderAcceptSelected !== undefined) {
+             headers = headers.set('Accept', httpHeaderAcceptSelected);
+         }
+ 
+ 
+         let responseType: 'text' | 'json' = 'json';
+         if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+             responseType = 'text';
+         }
+ 
+         return this.httpClient.get<ResponseObject>(`${this.configuration.basePath}/group/myGroups`,
+             {
+                 responseType: <any>responseType,
+                 withCredentials: this.configuration.withCredentials,
+                 headers: headers,
+                 observe: observe,
+                 reportProgress: reportProgress
+             }
+         );
+     }
+ 
+
+
+    // /**
+    //  * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+    //  * @param reportProgress flag to report request and response progress.
+    //  */
+    //  public myGroups(observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<ResponseObject>;
+    //  public myGroups(observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpResponse<ResponseObject>>;
+    //  public myGroups(observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpEvent<ResponseObject>>;
+    //  public myGroups(observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*'}): Observable<any> {
+
+
+    //     let jwtToken=localStorage.getItem("token");
+    //     let headers=this.defaultHeaders;
+    //     if(jwtToken!=null) {
+    //     jwtToken=jwtToken.replace('"','')
+    //     jwtToken=jwtToken.replace('"','')
+    //     headers=headers.append('Authorization','Bearer '+jwtToken);
+    //     }
+ 
+    //      let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+    //      if (httpHeaderAcceptSelected === undefined) {
+    //          // to determine the Accept header
+    //          const httpHeaderAccepts: string[] = [
+    //              '/'
+    //          ];
+    //          httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    //      }
+    //      if (httpHeaderAcceptSelected !== undefined) {
+    //          headers = headers.set('Accept', httpHeaderAcceptSelected);
+    //      }
+ 
+ 
+    //      let responseType: 'text' | 'json' = 'json';
+    //      if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+    //          responseType = 'text';
+    //      }
+ 
+    //      return this.httpClient.get<ResponseObject>(`${this.configuration.basePath}/group/myGroups`,
+    //          {
+    //              responseType: <any>responseType,
+    //              withCredentials: this.configuration.withCredentials,
+    //              headers: headers,
+    //              observe: observe,
+    //              reportProgress: reportProgress
+    //          }
+    //      );
+    //  }
+
+     /**
+     * @param userGroup 
+     * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+     * @param reportProgress flag to report request and response progress.
+     */
+    public removeUser(userGroup: UserGroup, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<ResponseObject>;
+    public removeUser(userGroup: UserGroup, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpResponse<ResponseObject>>;
+    public removeUser(userGroup: UserGroup, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpEvent<ResponseObject>>;
+    public removeUser(userGroup: UserGroup, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*'}): Observable<any> {
+        if (userGroup === null || userGroup === undefined) {
+            throw new Error('Required parameter userGroup was null or undefined when calling removeUser.');
+        }
+
+        let jwtToken=localStorage.getItem("token");
+        let headers=this.defaultHeaders;
+        if(jwtToken!=null) {
+        jwtToken=jwtToken.replace('"','')
+        jwtToken=jwtToken.replace('"','')
+        headers=headers.append('Authorization','Bearer '+jwtToken);
+        }
+
+        let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+        if (httpHeaderAcceptSelected === undefined) {
+            // to determine the Accept header
+            const httpHeaderAccepts: string[] = [
+                '*/*'
+            ];
+            httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+        }
+        if (httpHeaderAcceptSelected !== undefined) {
+            headers = headers.set('Accept', httpHeaderAcceptSelected);
+        }
+
+
+        // to determine the Content-Type header
+        const consumes: string[] = [
+            'application/json'
+        ];
+        const httpContentTypeSelected: string | undefined = this.configuration.selectHeaderContentType(consumes);
+        if (httpContentTypeSelected !== undefined) {
+            headers = headers.set('Content-Type', httpContentTypeSelected);
+        }
+
+        let responseType: 'text' | 'json' = 'json';
+        if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+            responseType = 'text';
+        }
+
+        return this.httpClient.put<ResponseObject>(`${this.configuration.basePath}/group/remove-user`,
+            userGroup,
+            {
+                responseType: <any>responseType,
+                withCredentials: this.configuration.withCredentials,
+                headers: headers,
+                observe: observe,
+                reportProgress: reportProgress
+            }
+        );
+    }
+
+    // /**
+    //  * @param id 
+    //  * @param observe set whether or not to return the data Observable as the body, response or events. defaults to returning the body.
+    //  * @param reportProgress flag to report request and response progress.
+    //  */
+    //  public removeUser(userGroup: UserGroup, observe?: 'body', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<ResponseObject>;
+    //  public removeUser(userGroup: UserGroup, observe?: 'response', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpResponse<ResponseObject>>;
+    //  public removeUser(userGroup: UserGroup, observe?: 'events', reportProgress?: boolean, options?: {httpHeaderAccept?: '*/*'}): Observable<HttpEvent<ResponseObject>>;
+    //  public removeUser(userGroup: UserGroup, observe: any = 'body', reportProgress: boolean = false, options?: {httpHeaderAccept?: '*/*'}): Observable<any> {
+    //     if (userGroup === null || userGroup === undefined) {
+    //                 throw new Error('Required parameter userGroup was null or undefined when calling removeUser.');
+    //             }
+ 
+    //      let jwtToken=localStorage.getItem("token");
+    //     let headers=this.defaultHeaders;
+    //     if(jwtToken!=null) {
+    //     jwtToken=jwtToken.replace('"','')
+    //     jwtToken=jwtToken.replace('"','')
+    //     headers=headers.append('Authorization','Bearer '+jwtToken);
+    //     }
+ 
+    //      let httpHeaderAcceptSelected: string | undefined = options && options.httpHeaderAccept;
+    //      if (httpHeaderAcceptSelected === undefined) {
+    //          // to determine the Accept header
+    //          const httpHeaderAccepts: string[] = [
+    //              '*/*'
+    //          ];
+    //          httpHeaderAcceptSelected = this.configuration.selectHeaderAccept(httpHeaderAccepts);
+    //      }
+    //      if (httpHeaderAcceptSelected !== undefined) {
+    //          headers = headers.set('Accept', httpHeaderAcceptSelected);
+    //      }
+ 
+ 
+    //      let responseType: 'text' | 'json' = 'json';
+    //      if(httpHeaderAcceptSelected && httpHeaderAcceptSelected.startsWith('text')) {
+    //          responseType = 'text';
+    //      }
+ 
+    //      return this.httpClient.put<ResponseObject>(`${this.configuration.basePath}/group/remove-user`,
+    //      userGroup,
+    //          {
+    //              responseType: <any>responseType,
+    //              withCredentials: this.configuration.withCredentials,
+    //              headers: headers,
+    //              observe: observe,
+    //              reportProgress: reportProgress
+    //          }
+    //      );
+    //  }
+
 }

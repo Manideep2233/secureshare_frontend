@@ -16,6 +16,7 @@ import { login_ouput } from 'src/app/Models/login_ouput';
 })
 export class RegisterComponent implements OnInit {
   regForm:any;
+  showbar:boolean=false;
   constructor(private fb:FormBuilder,private ps:DefaultService,public dialog: MatDialog,private router:Router) { }
 
   ngOnInit() {
@@ -28,6 +29,7 @@ export class RegisterComponent implements OnInit {
     });
   }
   regUser() {
+    this.showbar = true;
     let temp:Register={};
     temp.fullName=this.regForm.get('fullname').value;
     temp.username=this.regForm.get('UserName').value;
@@ -35,6 +37,7 @@ export class RegisterComponent implements OnInit {
     temp.confirmPassword=this.regForm.get('repassword').value;
     temp.email=this.regForm.get('email').value;
     this.ps.save(temp).subscribe(res=>{
+      this.showbar=false;
       if(res.status=='SUCCESS') {
         this.openDialog("Registered Successfully");
         // let jsonObj = JSON.parse(JSON.stringify(res.response)); // string to "any" object first

@@ -2,11 +2,13 @@
 <mat-toolbar color="primary" class="navbar">
     <div><a style="text-decoration: none; color: inherit;" [routerLink]="['']">Home</a></div>
     <div><a style="text-decoration: none; color: inherit;" [routerLink]="['myFeed']">MyFeed</a></div>
+    <div><a style="text-decoration: none; color: inherit;" [routerLink]="['MyGroups']">MyGroups</a></div>
     <div><a style="text-decoration: none; color: inherit;" [routerLink]="['AllGroups']">Explore</a></div>
     <div><a style="text-decoration: none; color: inherit;" [routerLink]="['myProfile']">MyProfile</a></div>
     <div><a style="text-decoration: none; color: inherit;" [routerLink]="['logout']">Logout</a></div>
     <div *ngIf="manage"><a style="text-decoration: none; color: inherit;" [routerLink]="['manage']">Manage</a></div>
     <div><a style="text-decoration: none; color: inherit;" [routerLink]="['notif']">Notifications</a></div>
+    
 </mat-toolbar>
 <mat-divider></mat-divider>
 <router-outlet></router-outlet>

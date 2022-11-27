@@ -1,0 +1,21 @@
+<div>
+    <ul *ngFor="let group of groupslist;let i= index;">
+    <li>
+    {{group.groupName}}
+    </li>
+    <li *ngIf="view[i]">
+                        <button mat-raised-button (click)="viewUsers(group.groupId,i)">View Users</button>
+                    </li>
+                    <li *ngIf="!view[i]">
+                        <button mat-raised-button (click)="HideUsers(i)">Hide Users</button>
+                    </li>
+    <li *ngIf="show_group[i]==true">
+                        <span style="display: inline;" *ngFor="let item of group.users">
+                            <div style="background-color:#0594fa; width: 95%;  border-radius: 25px;">
+                            <p>{{item.username}}</p>
+                    <button mat-raised-button (click)="deleteUser(group.groupId,item.userid)">Delete User</button>
+                        </div>
+                        </span>  
+     </li><br>
+    </ul>
+    </div>

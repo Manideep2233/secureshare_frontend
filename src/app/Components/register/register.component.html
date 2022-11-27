@@ -1,5 +1,7 @@
+<mat-progress-bar *ngIf="showbar" mode="indeterminate"></mat-progress-bar>
 <div class="regdiv">
     <h2>Register</h2>
+    
     <form name="regForm" [formGroup]="regForm">
         <mat-form-field>
             <mat-label>Full Name</mat-label>
@@ -40,5 +42,5 @@
           </mat-error>
           </mat-form-field><br>
     </form><br>
-    <button mat-raised-button (click)="regUser()" [disabled]="regForm.invalid">Register</button>
+    <button mat-raised-button (click)="regUser()" [disabled]="regForm.invalid || showbar">Register</button>
 </div>

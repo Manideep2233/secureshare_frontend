@@ -43,6 +43,7 @@
                 </li>
                 <li *ngIf="post.fileName!=''">
                     <button mat-raised-button (click)="getfile(post.postId,post.fileName)">{{post.fileName}} {{post.fileSize}}MB</button>
+                    <button mat-raised-button (click)="getfile1(post.postId,post.fileName)">Preview</button>
                 </li>
                 <li *ngIf="all_view[i]">
                     <button mat-raised-button (click)="viewComments_2(post.postId,i)">View Comments</button>
@@ -97,6 +98,7 @@
                 </li>
                 <li *ngIf="post.fileName!=''">
                     <button mat-raised-button (click)="getfile(post.postId,post.fileName)">{{post.fileName}} {{post.fileSize}}MB</button>
+                    <button mat-raised-button (click)="getfile1(post.postId,post.fileName)">Preview</button>
                 </li>
                 <li *ngIf="view[i]">
                     <button mat-raised-button (click)="viewComments(post.postId,i)">View Comments</button>

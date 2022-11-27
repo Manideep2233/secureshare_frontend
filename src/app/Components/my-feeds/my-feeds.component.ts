@@ -106,7 +106,8 @@ export class MyFeedsComponent implements OnInit {
         this.openDialog("Posted Successfully");
         window.location.reload();
       } else {
-        this.openDialog("File doesn't meet the criteria to upload");
+        
+        this.openDialog(employee.response);
       }
     })
   }
@@ -229,4 +230,31 @@ export class MyFeedsComponent implements OnInit {
       data: msg
     });
   }
+
+  getfile1(postid: any,filename:any) {
+    this.ps.fileOfPost(postid).subscribe(res => {
+      // let url = window.URL.createObjectURL(res);
+      // let a = document.createElement('a');
+      // document.body.appendChild(a);
+      // // a.setAttribute('style', 'display: none');
+      // this.fileUrl = window.location.assign(url);
+      // this.fileUrl.href=url;
+      // this.fileUrl.download="file"
+      // this.fileUrl.download=res;
+      // this.fileUrl.download = "file"
+      // a.download = res;
+      // this.fileUrl.click();
+      // window.URL.revokeObjectURL(url);
+      // this.fileUrl.remove();
+      
+      var url = window.URL.createObjectURL(res);
+      window.open(url,'_blank');
+      // var anchor = document.createElement("a");
+      // anchor.download = filename;
+      // anchor.href = url;
+      // anchor.click();
+
+    });
+  }
+
 }

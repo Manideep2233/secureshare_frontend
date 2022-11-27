@@ -16,3 +16,5 @@ export * from './post_comment';
 export * from './user_model';
 export * from './notification_model';
 export * from './group_model';
+export * from './user_new';
+export * from './myGroups';

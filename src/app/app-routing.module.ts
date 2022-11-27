@@ -12,6 +12,7 @@ import { RegisterComponent } from './Components/register/register.component';
 import { UpdateProfileComponent } from './Components/update-profile/update-profile.component';
 import { LogoutComponent } from './Components/logout/logout.component';
 import { NotificationsComponent } from './Components/notifications/notifications.component';
+import { Manage2Component } from './Components/manage2/manage2.component';
 const routes: Routes = [
   {'path':'test',component:TestComponent},
   {'path':'myFeed',component:MyFeedsComponent},
@@ -24,6 +25,7 @@ const routes: Routes = [
   {'path':'editProfile',component:UpdateProfileComponent},
   {'path':'logout',component:LogoutComponent},
   {'path':'notif',component:NotificationsComponent},
+  {'path' : 'MyGroups',component:Manage2Component},
   {'path':'',component:HomePageComponent},
 ];
 

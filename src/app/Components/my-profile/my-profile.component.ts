@@ -121,4 +121,29 @@ export class MyProfileComponent implements OnInit {
     this.all_view[index] = true;
     this.all_enablecomment[index] = false;
   }
+  getfile1(postid: any,filename:any) {
+    this.ps.fileOfPost(postid).subscribe(res => {
+      // let url = window.URL.createObjectURL(res);
+      // let a = document.createElement('a');
+      // document.body.appendChild(a);
+      // // a.setAttribute('style', 'display: none');
+      // this.fileUrl = window.location.assign(url);
+      // this.fileUrl.href=url;
+      // this.fileUrl.download="file"
+      // this.fileUrl.download=res;
+      // this.fileUrl.download = "file"
+      // a.download = res;
+      // this.fileUrl.click();
+      // window.URL.revokeObjectURL(url);
+      // this.fileUrl.remove();
+      
+      var url = window.URL.createObjectURL(res);
+      window.open(url,'_blank');
+      // var anchor = document.createElement("a");
+      // anchor.download = filename;
+      // anchor.href = url;
+      // anchor.click();
+
+    });
+  }
 }
