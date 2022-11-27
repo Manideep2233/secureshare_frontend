@@ -19,7 +19,7 @@ export class LoginComponent implements OnInit {
   loginForm: any;
   mfaForm: any;
   showmfa:boolean=false;
-  showbar:boolean=false;
+  showbarLogin:boolean=false;
   constructor(private fb: FormBuilder, private ps: DefaultService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     });
   }
   loginUser() {
-    this.showbar = true;
+    this.showbarLogin = true;
     let temp: Login = {}
     temp.username = this.loginForm.get('UserName').value;
     temp.password = this.loginForm.get('password').value;
@@ -41,7 +41,7 @@ export class LoginComponent implements OnInit {
     // console.log(pass);
     // console.log(bcrypt.compareSync("Nikhil@1",pass));
     this.ps.login(temp).subscribe(res => {
-      this.showbar=false;
+      this.showbarLogin=false;
       if (res.status == 'SUCCESS') {
         this.showmfa=true;
         this.openDialog(JSON.stringify(res.response));

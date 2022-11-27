@@ -21,10 +21,13 @@
         <ul *ngFor="let post of allPosts_list;let i=index;">
             <div style="background-color:powderblue;width: 90%; border-radius: 25px;"><br>
             <li>
-                Message:{{post.message}}<br><br>Time:{{post.postedTime}}<br><br>Posted By:{{post.createdBy}}<br>
+                Posted By:<div style="font-weight:bold; font-size: 15px;">
+                    {{post.createdBy}}
+                </div><br>Time:{{post.postedTime}}<br>Description:{{post.message}}<br>
             </li>
             <li *ngIf="post.fileName!=''">
-                <button mat-raised-button (click)="getfile(post.postId)">{{post.fileName}} {{post.fileSize}}MB</button>
+                <button mat-raised-button (click)="getfile(post.postId)">{{post.fileName}} {{post.fileSize}} KB</button>
+                &nbsp;
                 <button mat-raised-button (click)="getfile1(post.postId,post.fileName)">Preview</button>
             </li>
             <li *ngIf="all_view[i]">
@@ -39,7 +42,7 @@
                 </form><br>   
                 <button mat-raised-button (click)="addcomm1(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button><br><br>   
                 <span *ngFor="let item of post.comments">
-                    <div style="background-color:#0594fa; width: 90%; border-radius: 25px;">
+                    <div style="background-color:#3b889f; width: 90%; border-radius: 15px;">
                         <p style=" margin-left: 30px;">{{item.commentedBy}} &nbsp;&nbsp;{{item.commentedTime}}</p>
                         <p style=" margin-left: 30px;">{{item.message}}</p>
                     </div>

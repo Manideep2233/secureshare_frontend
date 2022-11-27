@@ -220,7 +220,7 @@ export class MyFeedsComponent implements OnInit {
         this.createGroup.get('groupDescription').setValue('');
         window.location.reload();
       } else {
-        this.openDialog("Something Went Wrong!!")
+        this.openDialog(JSON.stringify(res.response))
       }
     });
   }

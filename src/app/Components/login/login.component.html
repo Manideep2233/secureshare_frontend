@@ -1,4 +1,4 @@
-<mat-progress-bar *ngIf="showbar" mode="indeterminate"></mat-progress-bar>
+<mat-progress-bar *ngIf="showbarLogin" mode="indeterminate"></mat-progress-bar>
 <div class="logindiv">
     <h2>Login</h2>
     <form name="loginForm" [formGroup]="loginForm">
@@ -17,7 +17,7 @@
           </mat-error>
           </mat-form-field>
     </form><br>
-    <button mat-raised-button (click)="loginUser()" [disabled]="(loginForm.invalid) || (showmfa)">Login</button><br><br><br>
+    <button mat-raised-button (click)="loginUser()" [disabled]="(loginForm.invalid) || (showmfa) || showbarLogin">Login</button><br><br><br>
     <div *ngIf="showmfa">
       <form name="mfaForm" [formGroup]="mfaForm">
         <mat-form-field>
@@ -28,6 +28,6 @@
         </mat-error>
         </mat-form-field><br>
       </form>
-      <button mat-raised-button (click)="validate()" [disabled]="mfaForm.invalid || showbar">Validate</button>
+      <button mat-raised-button (click)="validate()" [disabled]="mfaForm.invalid || showbarLogin">Validate</button>
     </div>
 </div>
