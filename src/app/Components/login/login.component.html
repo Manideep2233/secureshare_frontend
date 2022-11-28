@@ -4,14 +4,14 @@
     <form name="loginForm" [formGroup]="loginForm">
         <mat-form-field>
             <mat-label>UserName</mat-label>
-            <input matInput (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="16" formControlName="UserName" type="text">
+            <input matInput (keypress)="specialCharaters($event)" maxlength="16" formControlName="UserName" type="text">
             <mat-error *ngIf="loginForm.get('UserName').errors?.required">
               User Name is <strong>required</strong>
           </mat-error>
           </mat-form-field><br>
           <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="20" formControlName="password" type="password">
+            <input matInput (keypress)="specialCharaters($event)" maxlength="20" formControlName="password" type="password">
             <mat-error *ngIf="loginForm.get('password').errors?.required">
               Password is <strong>required</strong>
           </mat-error>
@@ -22,7 +22,7 @@
       <form name="mfaForm" [formGroup]="mfaForm">
         <mat-form-field>
           <mat-label>TOKEN</mat-label>
-          <input matInput (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="8" formControlName="otp" type="text">
+          <input matInput (keypress)="specialCharaters($event)" maxlength="8" formControlName="otp" type="text">
           <mat-error *ngIf="mfaForm.get('otp').errors?.required">
             TOKEN is <strong>required</strong>
         </mat-error>

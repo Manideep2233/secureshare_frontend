@@ -5,21 +5,21 @@
     <form name="regForm" [formGroup]="regForm">
         <mat-form-field>
             <mat-label>Full Name</mat-label>
-            <input matInput formControlName="fullname" type="text" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="80">
+            <input matInput formControlName="fullname" type="text" (keypress)="specialCharaters($event)" maxlength="80">
             <mat-error *ngIf="regForm.get('fullname').errors?.required">
               Full Name is <strong>required</strong>
           </mat-error>
           </mat-form-field><br>
         <mat-form-field>
             <mat-label>UserName</mat-label>
-            <input matInput formControlName="UserName" type="text" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="16">
+            <input matInput formControlName="UserName" type="text" (keypress)="specialCharaters($event)" maxlength="16">
             <mat-error *ngIf="regForm.get('UserName').errors?.required">
               User Name is <strong>required</strong>
           </mat-error>
           </mat-form-field><br>
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="email" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="40">
+            <input matInput formControlName="email" type="email" (keypress)="specialCharaters($event)" maxlength="40">
             <mat-error *ngIf="regForm.get('email').errors?.required">
               email is <strong>required</strong>
           </mat-error>
@@ -29,14 +29,14 @@
           </mat-form-field><br>
           <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput formControlName="password" type="password" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" minlength="8" maxlength="20">
+            <input matInput formControlName="password" type="password" (keypress)="specialCharaters($event)" minlength="8" maxlength="20">
             <mat-error *ngIf="regForm.get('password').errors?.required">
               Password is <strong>required</strong>
           </mat-error>
           </mat-form-field><br>
           <mat-form-field>
             <mat-label>Password</mat-label>
-            <input matInput formControlName="repassword" type="password" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" minlength="8" maxlength="20">
+            <input matInput formControlName="repassword" type="password"  (keypress)="specialCharaters($event)" minlength="8" maxlength="20">
             <mat-error *ngIf="regForm.get('repassword').errors?.required">
               Password is <strong>required</strong>
           </mat-error>

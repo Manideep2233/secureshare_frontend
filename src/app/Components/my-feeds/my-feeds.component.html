@@ -19,13 +19,13 @@
             <form [formGroup]="createGroup">
                 <h2>Create new group?</h2>
                 
-                <input type="text" formControlName="groupName" placeholder="Enter Group Name" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="68">
+                <input type="text" formControlName="groupName" placeholder="Enter Group Name" (keypress)="specialCharaters($event)" maxlength="68">
                 <!-- <mat-error *ngIf="createGroup.get('groupName').errors?.required">
                     Name is <strong>required</strong>
                 </mat-error> -->
                 <br>
                 <br>
-                <input type="text" formControlName="groupDescription" placeholder="Enter Group Description" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="500">
+                <input type="text" formControlName="groupDescription" placeholder="Enter Group Description" (keypress)="specialCharaters($event)" maxlength="500">
                 <!-- <mat-error *ngIf="createGroup.get('groupDescription').errors?.required">
                     Description is <strong>required</strong>
                 </mat-error> -->
@@ -56,7 +56,7 @@
                 </li>
                 <li *ngIf="all_enablecomment[i]==true">
                     <form [formGroup]="addcomm2">
-                        <textarea type="text" formControlName="currcomment2" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="500"></textarea>
+                        <textarea type="text" formControlName="currcomment2" (keypress)="specialCharaters($event)" maxlength="500"></textarea>
                     </form> 
                     <br>
                     <button mat-raised-button (click)="add_comm2(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button>
@@ -85,7 +85,7 @@
                         </div>
                         <mat-form-field>
                             <mat-label>Description</mat-label>
-                            <input matInput formControlName="message" type="text" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="500">
+                            <input matInput formControlName="message" type="text" (keypress)="specialCharaters($event)" maxlength="500">
                           </mat-form-field>
                         <button mat-raised-button (click)="useraddPost()" [disabled]="postForm.invalid">Post</button>
                         </form>
@@ -113,7 +113,7 @@
                 </li>
                 <li *ngIf="enablecomment[i]==true">
                     <form [formGroup]="addcomm2">
-                        <textarea type="text" formControlName="currcomment2" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="500"></textarea>
+                        <textarea type="text" formControlName="currcomment2" (keypress)="specialCharaters($event)" maxlength="500"></textarea>
                     </form> 
                     <br>
                     <button mat-raised-button (click)="add_comm2(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button>
