@@ -60,4 +60,18 @@ export class UpdateProfileComponent implements OnInit {
     });
   }
 
+  specialCharaters(event:any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if ((charCode >= 32 && charCode<=47) || (charCode >= 58 && charCode<=63) || (charCode >= 91 && charCode<=96) ||
+    (charCode >= 123 && charCode<=126) ) {
+      return false;
+    }
+    return true;
+
+  }
+
+  handlePaste(event:any){
+      event.preventDefault();
+  }
+  
 }

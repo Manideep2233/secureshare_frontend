@@ -38,7 +38,7 @@
             </li>
             <li *ngIf="all_enablecomment[i]==true">
                 <form [formGroup]="addcomm2">
-                    <textarea type="text" formControlName="currcomment2"></textarea>
+                    <textarea type="text" formControlName="currcomment2" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="500"></textarea>
                 </form><br>   
                 <button mat-raised-button (click)="addcomm1(post.postId)" [disabled]="addcomm2.invalid">Add Comment</button><br><br>   
                 <span *ngFor="let item of post.comments">

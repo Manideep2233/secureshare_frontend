@@ -2,18 +2,18 @@
     <h2>Update</h2>
     <form name="regForm" [formGroup]="updateForm">
         <mat-form-field>
-            <mat-label>First Name</mat-label>
-            <input matInput formControlName="fullname" type="text">
+            <mat-label>Full Name</mat-label>
+            <input matInput formControlName="fullname" type="text" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="50">
             
           </mat-form-field><br>
         <mat-form-field>
             <mat-label>UserName</mat-label>
-            <input matInput formControlName="UserName" type="text">
+            <input matInput formControlName="UserName" type="text" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="16">
             
           </mat-form-field><br>
           <mat-form-field>
             <mat-label>Email</mat-label>
-            <input matInput formControlName="email" type="email">
+            <input matInput formControlName="email" type="email" (paste)="handlePaste($event)" (keypress)="specialCharaters($event)" maxlength="40">
           </mat-form-field><br>
     </form><br>
     <button mat-raised-button (click)="editProfile()">Update Profile</button>

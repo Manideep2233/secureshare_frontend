@@ -1,8 +1,10 @@
 <div class="container">
-    <div class="logindiv">
-        <button mat-raised-button (click)="redirect('Login')">Click Here to Login</button>
-    </div>
+    <h2>These characters are not allowed in the platform ~`!@#$%^&*()_+,./;'[]:"?&gt;&lt;-</h2>
     <div class="regdiv">
-        <button mat-raised-button (click)="redirect('Register')">Click Here to Register</button>
+        <button class="button" mat-raised-button (click)="redirect('Register')"
+        >Click Here to Register</button>
+    </div>
+    <div class="logindiv">
+        <button class="button" mat-raised-button (click)="redirect('Login')">Click Here to Login</button>
     </div>
 </div>

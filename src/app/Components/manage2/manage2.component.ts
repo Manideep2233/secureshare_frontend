@@ -61,6 +61,16 @@ this.openDialog("File doesn't meet the criteria to upload");
 });
 }
 
+deleteGroup(groupid:any) {
+  this.ps.deleteGroup(groupid).subscribe(res=>{
+    if(res.status=='SUCCESS') {
+    this.openDialog(res.response);
+    } else {
+      this.openDialog("Something Went Wrong!!");
+    }
+  });
+}
+
 openDialog(msg: any) {
     const dialogRef = this.dialog.open(DisplayDialogComponent, {
       width: '250px',
@@ -71,5 +81,6 @@ openDialog(msg: any) {
     });
   }
 
+ 
 
 }

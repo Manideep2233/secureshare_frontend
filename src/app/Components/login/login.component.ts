@@ -36,10 +36,9 @@ export class LoginComponent implements OnInit {
     let temp: Login = {}
     temp.username = this.loginForm.get('UserName').value;
     temp.password = this.loginForm.get('password').value;
-    const salt = bcrypt.genSaltSync(10);
-    let pass = bcrypt.hashSync(this.loginForm.value.password, salt);
-    // console.log(pass);
-    // console.log(bcrypt.compareSync("Nikhil@1",pass));
+    let inputValid:boolean = false;
+   
+   
     this.ps.login(temp).subscribe(res => {
       this.showbarLogin=false;
       if (res.status == 'SUCCESS') {
@@ -50,6 +49,13 @@ export class LoginComponent implements OnInit {
       }
     });
   }
+
+
+    // const salt = bcrypt.genSaltSync(10);
+    // let pass = bcrypt.hashSync(this.loginForm.value.password, salt);
+    // console.log(pass);
+    // console.log(bcrypt.compareSync("Nikhil@1",pass));
+ 
   openDialog(msg: any) {
     const dialogRef = this.dialog.open(DisplayDialogComponent, {
       width: '250px',
@@ -72,6 +78,20 @@ export class LoginComponent implements OnInit {
         this.openDialog(JSON.stringify(res.response));
       }
     });
+  }
+
+  specialCharaters(event:any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    if ((charCode >= 32 && charCode<=47) || (charCode >= 58 && charCode<=63) || (charCode >= 91 && charCode<=96) ||
+    (charCode >= 123 && charCode<=126) ) {
+      return false;
+    }
+    return true;
+
+  }
+
+  handlePaste(event:any){
+      event.preventDefault();
   }
 
 }
