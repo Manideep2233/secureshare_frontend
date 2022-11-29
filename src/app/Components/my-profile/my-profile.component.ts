@@ -149,7 +149,7 @@ export class MyProfileComponent implements OnInit {
 
   specialCharaters(event:any): boolean {
     const charCode = (event.which) ? event.which : event.keyCode;
-    if ((charCode >= 33 && charCode<=47) || (charCode >= 58 && charCode<=63) || (charCode >= 91 && charCode<=96) ||
+    if ((charCode >= 33 && charCode<=45) || (charCode >= 58 && charCode<=63) || (charCode >= 91 && charCode<=96) ||
     (charCode >= 123 && charCode<=126) ) {
       return false;
     }
